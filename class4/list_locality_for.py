@@ -5,8 +5,8 @@ file_content=infile.readlines()
 correct_list=[ ]
 
 for counter in range(len(file_content)):
-    tmp=(file_content[counter])
-    tmp=tmp.rstrip('\n')
+    tmp=(file_content[counter].rstrip('\n'))
+    #tmp=tmp.rstrip('\n')
     correct_list.append(tmp)
 
 input_place=input("Please enter a place name :- ")
