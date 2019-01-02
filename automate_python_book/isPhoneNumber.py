@@ -94,3 +94,48 @@ print(mo1.group())
 print(mo1.group(1))
 
 ====================
+
+import re
+phonenumberregex=re.compile(r'(\d\d\d-)?\d\d\d-\d\d\d\d')
+mo=phonenumberregex.search('My number is :- 345-6789')
+print(mo.group())
+
+======================
+
+import re
+batregex=re.compile(r'Bat(wo)?man')
+mo=batregex.search('My favourite cartoon is :- Batman')
+mo1=batregex.search('My favourie cartoon is :- Batwoman')
+mo2=batregex.search('My favourie cartoon is :- Batwowowowman')
+print(mo.group())
+print(mo1.group())
+if mo2==None:
+    print("FOUND!!!")
+
+=====================
+
+Matching Zero or More with the Star
+
+batRegex = re.compile(r'Bat(wo)*man')
+mo1 = batRegex.search('The Adventures of Batman')
+print(mo1.group())
+mo2 = batRegex.search('The Adventures of Batwoman')
+print(mo2.group())
+mo3 = batRegex.search('The Adventures of Batwowowowoman')
+print(mo3.group())
+
+===================
+
+Matching One or More with the Plus
+
+batRegex = re.compile(r'Bat(wo)+man')
+mo1 = batRegex.search('The Adventures of Batwoman')
+print(mo1.group())
+mo2 = batRegex.search('The Adventures of Batwowowowoman')
+print(mo2.group())
+mo3 = batRegex.search('The Adventures of Batman')
+if mo3 == None:
+    print("Nothing is found !!!")
+
+====================
+
