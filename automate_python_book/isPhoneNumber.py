@@ -139,3 +139,52 @@ if mo3 == None:
 
 ====================
 
+Matching Specific Repetitions with Curly Brackets
+
+haRegex = re.compile(r'(Ha){3}')
+mo1 = haRegex.search('HaHaHa')
+mo1.group()
+'HaHaHa'
+mo2 = haRegex.search('Ha')
+mo2 == None
+True
+
+
+====================
+
+greedy and nongreedy matching
+
+Python’s regular expressions are greedy by default, which means that in ambiguous situations they will match the longest string possible.
+The non- greedy version of the curly brackets, which matches the shortest string pos- sible,
+has the closing curly bracket followed by a question mark.
+
+greedyHaRegex = re.compile(r'(Ha){3,5}')
+mo1 = greedyHaRegex.search('HaHaHaHaHa')
+print(mo1.group())
+
+nongreedyHaRegex = re.compile(r'(Ha){3,5}?')
+mo2=nongreedyHaRegex.search('HaHaHaHaHa')
+print(mo2.group())
+
+
+======================
+
+the findall() method
+
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+mo = phoneNumRegex.search('Cell: 415-555-9999 Work: 212-555-0000')
+print(mo.group())
+
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+phoneNumRegex.findall('Cell: 415-555-9999 Work: 212-555-0000')
+['415-555-9999', '212-555-0000']   # a list of string is got as an output
+
+
+phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)') # has groups
+phoneNumRegex.findall('Cell: 415-555-9999 Work: 212-555-0000')
+[('415', '555', '1122'), ('212', '555', '0000')]  # a list of tuples , with each matched items
+
+=====================
+
+
+
