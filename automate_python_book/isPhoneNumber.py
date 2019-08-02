@@ -187,4 +187,58 @@ phoneNumRegex.findall('Cell: 415-555-9999 Work: 212-555-0000')
 =====================
 
 
+the caret and dollar Sign characters
+
+beginsWithHello = re.compile(r'^Hello')
+beginsWithHello.search('Hello world!')
+
+beginsWithHello.search('He said hello.') == None
+True
+
+endsWithNumber = re.compile(r'\d$')
+endsWithNumber.search('Your number is 42')
+endsWithNumber.search('Your number is forty two.') == None
+True
+
+======================
+
+the wildcard character
+
+atRegex = re.compile(r'.at')
+atRegex.findall('The cat in the hat sat on the flat mat.')
+['cat', 'hat', 'sat', 'lat', 'mat']
+
+=======================
+
+Matching Everything with Dot-Star
+
+nameRegex = re.compile(r'First Name: (.*) Last Name: (.*)')
+mo = nameRegex.search('First Name: Al Last Name: Sweigart')
+mo.group(1)
+mo.group(2)
+
+
+nongreedyRegex = re.compile(r'<.*?>')
+mo = nongreedyRegex.search('<To serve man> for dinner.>')
+mo.group()
+'<To serve man>'
+
+
+greedyRegex = re.compile(r'<.*>')
+mo = greedyRegex.search('<To serve man> for dinner.>')
+mo.group()
+'<To serve man> for dinner.>'
+
+========================
+
+Matching Newlines with the Dot Character
+
+noNewlineRegex = re.compile('.*')
+noNewlineRegex.search('Serve the public trust.\nProtect the innocent. \nUphold the law.').group()
+'Serve the public trust.'
+
+newlineRegex = re.compile('.*', re.DOTALL)
+newlineRegex.search('Serve the public trust.\nProtect the innocent. \nUphold the law.').group()
+'Serve the public trust.\nProtect the innocent.\nUphold the law.'
+
 

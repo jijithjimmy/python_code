@@ -1,3 +1,0 @@
-bkjkjFB
-DBDDGB'FHJF' \
-      'BFB'

@@ -1,8 +1,11 @@
-random_value=int(input("Please enter a random number :-"))
-random_sequenc=input("Please enter a random sequence :-")
+import mysql.connector
 
-#total_length=len(random_sequenc)
+mydb = mysql.connector.connect(
+    host="192.168.1.29",
+    user="root",
+    passwd="python12"
+)
 
-data=int(random_sequenc[0: :2])
-final_product=random_value*data
-print(final_product)
+mycursor = mydb.cursor()
+
+mycursor.execute("CREATE DATABASE mydatabase")
